@@ -660,7 +660,9 @@ Menifest파일에 팝업창으로 열기 위해 테마를 Dialog로 지정해 �
 
 <pre>
 <code>
+
 <activity android:name=".Main3Activity" android:theme="@android:style/Theme.Dialog" />
+
 </code>
 </pre>
 
