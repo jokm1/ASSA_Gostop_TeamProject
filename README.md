@@ -58,9 +58,9 @@ MySQL 관리 웹페이지로 들어가 회원가입시 기입하는 정보를 �
 ![sql테이블](https://user-images.githubusercontent.com/62593452/85231107-79507500-b42f-11ea-92d9-59a3e70dccef.PNG)
 
 
-~~~java
-int a;
-int b;
+~~~
+<int a;
+int b;/>
 ~~~
 
 
