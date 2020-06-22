@@ -135,6 +135,9 @@ implementation 'com.android.volley:volley:1.1.1'
 Buildgradle(app)파일에 카카오 로그인을 위한 sdk, url을 추가해준다.
 
 ~~~java
+advanced: {
+    codeStyle: 'dark'
+  }
 dependencies {
     implementation 'com.kakao.sdk:usermgmt:1.29.0'
 }
