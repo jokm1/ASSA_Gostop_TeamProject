@@ -729,6 +729,44 @@ public void onBackPressed() {
 }
 ~~~
 
+로그아웃을 하기 위해 Layout에 버튼을 만들어 준다. 
+~~~java
+<Button
+    android:id="@+id/logoutbtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="90dp"
+    android:layout_marginTop="44dp"
+
+    android:text="로그아웃"
+    app:layout_constraintLeft_toLeftOf="@id/ivProfile"
+    app:layout_constraintTop_toBottomOf="@+id/ivProfile" />
+~~~
+
+로그아웃을 위한 클릭 메소드를 입력한다.
+~~~java
+btnLogout.setOnClickListener(new Button.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(getApplicationContext(), "정상적으로 로그아웃되었습니다.", Toast.LENGTH_SHORT).show();
+
+        UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+            @Override
+            public void onCompleteLogout() {
+                Intent intent = new Intent(Main3Activity.this, StartActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+    }
+});
+~~~
+
+
+
+
+
+
 ##### 팝업창 이미지
   
 
