@@ -28,7 +28,7 @@
 
     <ImageView
         android:id="@+id/ivProfile"
-        android:background="@drawable/ddff"
+        android:background="@drawable/human"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginLeft="28dp"
