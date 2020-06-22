@@ -196,31 +196,6 @@ private void getAppKeyHash() {
 ##### 해시 키 등록
 ![해시키등록](https://user-images.githubusercontent.com/62593452/85231707-7ad06c00-b434-11ea-8227-65cfb3187d6c.png)     
 
->#### 2-1-4 원형 프로필
-원형 프로필을 만들기 위해서는 Buildgradle(app)에 지정을 해준다.
-<pre>
-<code>
-annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
-implementation 'de.hdodenhof:circleimageview:2.2.0'
-</code>
-</pre>   
-layout 설정 후 string변수를 이용하여 LoginActivity에서 보낸 정보를 받아온다.
-<pre>
-<code>
-CircleImageView ivProfile = findViewById(R.id.ivProfile);
-
-   Intent intent = getIntent();
-
-    strProfile = intent.getStringExtra("profile");
-
-Glide.with(this).load(strProfile).into(ivProfile);
-</code>
-</pre>
-##### 원형프로필
-![원형프로필](https://user-images.githubusercontent.com/62593452/85231708-7c019900-b434-11ea-8394-b2ee8c21b71c.png)   
-
-    
-    
 
 >### 2-2 Google Map
 Google Map을 기반으로 지도를 구현한다.    
@@ -651,19 +626,51 @@ private static double rad2deg(double rad) {
 </pre>    
 
 
+>### 2-3 안드로이드 스튜디오에서 구현한 기능
+
+>#### 2-3-1 원형 프로필
+원형 프로필을 만들기 위해서는 Buildgradle(app)에 지정을 해준다.
+<pre>
+<code>
+annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+implementation 'de.hdodenhof:circleimageview:2.2.0'
+</code>
+</pre>   
+layout 설정 후 string변수를 이용하여 LoginActivity에서 보낸 정보를 받아온다.
+<pre>
+<code>
+CircleImageView ivProfile = findViewById(R.id.ivProfile);
+
+   Intent intent = getIntent();
+
+    strProfile = intent.getStringExtra("profile");
+
+Glide.with(this).load(strProfile).into(ivProfile);
+</code>
+</pre>
+##### 원형프로필
+![원형프로필]
+
+    
 
 
->### 2-3 Unity를 이용한 게임
->>#### 2-3-1 고스톱 알고리즘
->>>##### 2-3-1-1 Player
->>>##### 2-3-1-2 AI
 
->>#### 2-3-2 특수효과
->>>##### 2-3-2-1 효과음
+
+
+
+
+
+>### 2-4 Unity를 이용한 게임
+>>#### 2-4-1 고스톱 알고리즘
+>>>##### 2-4-1-1 Player
+>>>##### 2-4-1-2 AI
+
+>>#### 2-4-2 특수효과
+>>>##### 2-4-2-1 효과음
 효과음이 필요한 오브젝트가 많아 오브젝트마다 효과음을 넣으면 비효율적이어서 효과음 오브젝트를 만들어서 효과음이 필요한 부분에 각자 코드로 적용시켜 효율적인 효과음 재생이 가능하다.
->>>##### 2-3-2-2 카드 효과(Card Hitting)
+>>>##### 2-4-2-2 카드 효과(Card Hitting)
 전체적인 카드의 움직임은 앱을 구동시키는 기기의 성능에 따라 움직임이 자연스러워 보이기도 하고 부자연스러워 보이기도 하기에 최대한 성능에 구애받지 않는 퍼포먼스를 보여주기 위해 Time.time을 이용해 시간이 흘러가는것에 따라 카드의 움직임을 조절가능하게 하였다.
->>>##### 2-3-2-3 보간 함수
+>>>##### 2-4-2-3 보간 함수
 각종 보간함수를 통해 오브젝트를 부드럽게 이동시키거나 회전 가능하게 하였다. 보간함수 같은 경우는
 
 
