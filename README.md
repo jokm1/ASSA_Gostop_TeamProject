@@ -621,7 +621,7 @@ Glide.with(this).load(strProfile).into(ivProfile);
 ~~~
 
 ##### 원형프로필
-![원형프로필]
+![원형프로필](https://user-images.githubusercontent.com/62593452/85231708-7c019900-b434-11ea-8394-b2ee8c21b71c.png)   
 
     
 2-3-2 팝업창
@@ -768,7 +768,7 @@ btnLogout.setOnClickListener(new Button.OnClickListener() {
 
 
 ##### 팝업창 이미지
-  
+![팝업창이미지](https://user-images.githubusercontent.com/62593452/85271959-79e01e80-b4b6-11ea-9ca9-593d1f714428.jpg)  
 
 
 2-3-3 수익성 측면
@@ -776,6 +776,7 @@ btnLogout.setOnClickListener(new Button.OnClickListener() {
 Google AdMob에 가입한 후 APP을 등록 한다.
 
 ##### Google AdMob 이미지
+![AdMob](https://user-images.githubusercontent.com/62593452/85271973-7ea4d280-b4b6-11ea-8fe3-5bcae75b3b03.png)   
 
 https://admob.google.com/intl/ko_ALL/home/?gclid=CjwKCAjwrcH3BRApEiwAxjdPTVkrX0stPQB6hiwrMiF_L6b4KOwC7RZXPFJ13Z7h87UP6IGMh-p2QxoCi-sQAvD_BwE
 
@@ -890,7 +891,8 @@ private AdSize getAdSize() {
 하단 배너에 광고가 나오게 된다.
 
 ##### 광고 이미지
-  
+![광고이미지](https://user-images.githubusercontent.com/62593452/85271974-7f3d6900-b4b6-11ea-8b66-36339807c626.jpg)
+![광고이미지2](https://user-images.githubusercontent.com/62593452/85271976-7fd5ff80-b4b6-11ea-95f6-9c43f76e6abb.jpg)    
 
 
 
@@ -912,11 +914,13 @@ private AdSize getAdSize() {
 그런 상황에 맞는 오브젝트를 만들어 상황이 발생하게 되면 Instance 시킨다.
 
 ##### 아틀라스 이미지
+![아틀라스이미지](https://user-images.githubusercontent.com/62593452/85271978-806e9600-b4b6-11ea-87b9-5e8f57a7f8eb.png)   
   
 예를 들어 폭탄의 경우를 설명하자면 이미지들을 아틀라스하여 자른 후
 프리팹을 만들어 Sprite를 지정해준다
 
 ##### 폭탄 프리팹 이미지
+![폭탄프리팹](https://user-images.githubusercontent.com/62593452/85271979-806e9600-b4b6-11ea-891c-88b3a2b8a859.png)   
 
 ~~~cs
 public class EffectManager : SingletonMonobehaviour<EffectManager>
@@ -1005,6 +1009,8 @@ gameObject.SetActive(false);}}
 ~~~
 
 ##### Sprite Renderer 이미지
+![Sprite이미지](https://user-images.githubusercontent.com/62593452/85271981-81072c80-b4b6-11ea-986f-63266014fc37.png)
+
 
 1고,2고… 의 경우
 1고부터 시작되는 고의 경우엔 일반적인 방식으로는 많이 불편하다.
@@ -1043,26 +1049,24 @@ this.go_images = new List<Sprite>(); //스프라이트 이미지 불러오기//
 ~~~
 
 ##### Popup_go 이미지
+![Popup이미지](https://user-images.githubusercontent.com/62593452/85271985-849ab380-b4b6-11ea-962a-8a5db99c84a3.png)
 
 >>>##### 2-4-2-1 효과음
 효과음이 필요한 오브젝트가 많아 오브젝트마다 효과음을 넣으면 비효율적이어서 효과음 오브젝트를 만들어서 효과음이 필요한 부분에 각자 코드로 적용시켜 효율적인 효과음 재생이 가능하다.
 >>>##### 2-4-2-2 카드 효과(Card Hitting)
 전체적인 카드의 움직임은 앱을 구동시키는 기기의 성능에 따라 움직임이 자연스러워 보이기도 하고 부자연스러워 보이기도 하기에 최대한 성능에 구애받지 않는 퍼포먼스를 보여주기 위해 Time.time을 이용해 시간이 흘러가는것에 따라 카드의 움직임을 조절가능하게 하였다.
 >>>##### 2-4-2-3 보간 함수
-각종 보간함수를 통해 오브젝트를 부드럽게 이동시키거나 회전 가능하게 하였다. 보간함수 같은 경우는 복잡한 수학식으로 되있어서 이해하기는 힘들지만 예제가 많아서 내가 필요로 하는 기능만 가져다 사용하면 된다.
-~~~cs
-public static class EasingUtil
-{
-    public static float linear(float start, float end, float value)
-    {
-        return Mathf.Lerp(start, end, value);
-    }
-    public static float easeInExpo(float start, float end, float value)
-    {
-        end -= start;
-        return end * Mathf.Pow(2, 10 * (value / 1 - 1)) + start;
-    }
-}
-~~~
+각종 보간함수를 통해 오브젝트를 부드럽게 이동시키거나 회전 가능하게 하였다. 보간함수 같은 경우는
+
+
+
+![1번](https://user-images.githubusercontent.com/62593452/85271987-85334a00-b4b6-11ea-815a-d70b1c88d82c.png)
+![2번](https://user-images.githubusercontent.com/62593452/85271989-85cbe080-b4b6-11ea-9120-dd85b49ebcf0.png)
+![3번](https://user-images.githubusercontent.com/62593452/85271990-86647700-b4b6-11ea-8e82-ee2896fb3ece.png)
+![4번](https://user-images.githubusercontent.com/62593452/85271992-86647700-b4b6-11ea-9eb8-73cc7c94b968.png)
+
+
+
+
 
 
