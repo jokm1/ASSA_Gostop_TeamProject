@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RegisterLoginExample</string>
+    <string name="game_view_content_description">Game view</string>
+    <string name="kakao_app_key">051e67b30e7fbf85a87e39a9eff987f2</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
