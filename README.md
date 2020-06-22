@@ -621,7 +621,7 @@ Glide.with(this).load(strProfile).into(ivProfile);
 ~~~
 
 ##### 원형프로필
-![원형프로필](https://user-images.githubusercontent.com/62593452/85231708-7c019900-b434-11ea-8394-b2ee8c21b71c.png)   
+![2](https://user-images.githubusercontent.com/62593452/85274002-536fb280-b4b9-11ea-89f6-5b3b11b68f23.png)
 
     
 2-3-2 팝업창
