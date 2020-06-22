@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    Glide.with(this).load(strProfile).into(ivProfile);
+       Glide.with(this).load(strProfile).into(ivProfile);
 
 
         Log.d(TAG, "onCreate");
