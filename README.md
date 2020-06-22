@@ -155,23 +155,20 @@ allprojects {
 ~~~
 
 manifest파일에 카카오 로그인에 필요한 인터넷연결을 permission하고 AppKey와 네이티브 키를 입력한다.
-<pre>
-<code>
+~~~java
 uses-permission android:name="android.permission.INTERNET"
-</pre>
-</code>
-<pre>
-<code>
+~~~
+
+~~~java
 meta-data
     android:name="com.kakao.sdk.AppKey"
     android:value="네이티브 키"
-</pre>
-</code>
+~~~
 
 카카오 로그인을 하기위해 해시 키를 생성 후 카카오 디벨로퍼에 입력해준다.
 ##### 해시 키 생성
-<pre>
-<code>
+
+~~~java
 private void getAppKeyHash() {
     try {
         PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
@@ -187,8 +184,8 @@ private void getAppKeyHash() {
         Log.e("name not found", e.toString());
     }
 }
-</code>
-</pre>
+~~~
+
 ##### logcat창에 나오는 HashKey
 ![해시키](https://user-images.githubusercontent.com/62593452/85231710-7c9a2f80-b434-11ea-8124-d118791b0e7b.png)    
 ##### 해시 키 등록
@@ -201,17 +198,15 @@ Google Map에 엑세스하기 위해서는 최소 SDK레벨 2.0 이여야한다.
 1)Google 계정 및 GoogleMap 계정 및 API Key 발급받는다.   
 2)Google console developer 사이트에 방문하여 새 프로젝트를 생성 후 API Key발급받고   
 AndroidManifest.xml파일에 추가해준다.
-<pre>
-<code>
+~~~java
  meta-data
     android:name="com.google.android.geo.API_KEY"
     android:value="API키"
-</code>
-</pre>   
+~~~  
 
 3)Module app에 GooglePlayServices를 사용하기 위한 코드를 추가해준다.
-<pre>
-<code>
+
+~~~java
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
@@ -221,23 +216,21 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
-</code>
-</pre>    
+~~~  
 
 4)activity_main.xml layout파일에 <fragment>태그를 지도가 표시될 위치에 적어준다.
-<pre>
-<code>
+
+~~~java
     fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-</code>
-</pre>   
+~~~
+
 지도를 포함하는 MainActivity.java파일에 코드를 추가해준다.
-<pre>
-<code>
+~~~java
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
@@ -311,14 +304,12 @@ mActivity = this;
     mapFragment.getMapAsync(this);
 
 }
-</code>
-</pre>    
+~~~   
 
 
 >>#### 2-2-1 지도상 내위치 표시
 1)내 기기의 위치를 지도상에 표시해주기 위해서 권한 요청을 요구하는 코드와 GPS 활성화를 위한 코드를 추가해준다.
-<pre>
-<code>
+~~~java
 private void showDialogForLocationServiceSetting() {
 
     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -369,14 +360,13 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             break;
     }
 }
-</code>
-</pre>    
+~~~  
 
 2)위 코드를 작성하면 퍼미션 검사를 통해 GPS 활성화가 진행된다.   
 3)Geocorder를 이용한 내 위치를 불러오는 코드와 나의 위치로 카메라 포지션을 변경해 주기 위한 코드를 MainActivity에 추가해준다.
 ##### Geocorder를 이용한 내위치 불러오기
-<pre>
-<code>
+
+~~~java
 public String getCurrentAddress(LatLng latlng) {
 
     //지오코더... GPS를 주소로 변환
@@ -466,11 +456,10 @@ public void setCurrentLocation(Location location, String markerTitle, String mar
     mGoogleMap.moveCamera(cameraUpdate);
 
 }
-</code>
-</pre>    
+~~~
+
 ##### 나의 위치로 카메라 포지션 변경
-<pre>
-<code>
+~~~java
 mGoogleMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
 
     @Override
@@ -529,8 +518,7 @@ public void onLocationChanged(Location location) {
 
     mCurrentLocatiion = location;
 }
-</code>
-</pre>
+~~~
 
 
 
@@ -539,8 +527,7 @@ public void onLocationChanged(Location location) {
 1)AI상대들을 지도에 표시하기 위해 생성할 좌표를 확인한다.   
 2)AI를 지도상에 나타내기 위해 MainActivity.java를 생성 후 개체 생성 코드에 해당 좌표를 삽입하여 생성한다.
 ##### AI 대결상대인 한누리관   
-<pre>
-<code>
+~~~java
 MarkerOptions marker = new MarkerOptions();
 marker .position(new LatLng(36.834258, 127.179241))
         .title("한누리관")
@@ -559,16 +546,14 @@ googleMap.addMarker(marker).showInfoWindow();
         locationA.setLatitude(36.834258);  //한누리//
         locationA.setLongitude(127.179241);
     }
-</code>
-</pre>
+~~~
 
 
 >>#### 2-2-3 대결 가능 거리 설정    
 2-2-2에서 AI대결상대를 생성 후 대결상대와 내 위치가 10M 이상으로 차이가 난다면 게임 실행이 안된다.    
 1)10M 이상의 차이가 나는지 확인하기 위해 거리를 계산해주는 코드를 MainActivity.java에 추가한다.
 ##### AI 대결상대인 한누리관의 거리를 계산
-<pre>
-<code>
+~~~java
 double distanceMeter4 =
         distance(currentPosition.latitude, currentPosition.longitude, 36.834258, 127.179241, "meter"); //한누리//
 
@@ -602,13 +587,11 @@ private static double deg2rad(double deg) {
 
 private static double rad2deg(double rad) {
     return (rad * 180 / Math.PI);
-</code>
-</pre>    
+~~~ 
 
 3)2)에서 코드를 작성 후 내 위치와 상대의 위치를 비교하기 위해 상대와 내 위치 데이터를 불러와 10M 이내이면 UnityPlayerActivity가 실행되며, 10M 이외이면 몇M 떨어져 있는지 알려주는 Toast 메세지를 출력한다.
 ##### AI 대결상대인 한누리관과 내 위치를 비교
-<pre>
-<code>
+~~~java
             if (marker.getTitle().equals("한누리관"))
             {
                 if(distanceMeter4<=10) {
@@ -620,23 +603,19 @@ private static double rad2deg(double rad) {
                     Toast.makeText(getApplicationContext(), "NPC 한누리관과의 거리가 "+ i4 + "M만큼 떨어져 있습니다." , Toast.LENGTH_LONG).show();
                 }
             }
-</code>
-</pre>    
+~~~    
 
 
 >### 2-3 안드로이드 스튜디오에서 구현한 기능
 
 >#### 2-3-1 원형 프로필
 원형 프로필을 만들기 위해서는 Buildgradle(app)에 지정을 해준다.
-<pre>
-<code>
+~~~java
 annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 implementation 'de.hdodenhof:circleimageview:2.2.0'
-</code>
-</pre>   
+~~~ 
 layout 설정 후 string변수를 이용하여 LoginActivity에서 보낸 정보를 받아온다.
-<pre>
-<code>
+~~~java
 CircleImageView ivProfile = findViewById(R.id.ivProfile);
 
    Intent intent = getIntent();
@@ -644,8 +623,8 @@ CircleImageView ivProfile = findViewById(R.id.ivProfile);
     strProfile = intent.getStringExtra("profile");
 
 Glide.with(this).load(strProfile).into(ivProfile);
-</code>
-</pre>
+~~~
+
 ##### 원형프로필
 ![원형프로필]
 
@@ -656,17 +635,14 @@ Glide.with(this).load(strProfile).into(ivProfile);
 
 Menifest파일에 팝업창으로 열기 위해 테마를 Dialog로 지정해 준다.
 
-<pre>
-<code>
-activity android:name=".Main3Activity" android:theme="@android:style/Theme.Dialog"
-</code>
-</pre>
+~~~java
+<activity android:name=".Main3Activity" android:theme="@android:style/Theme.Dialog"/>
+~~~
 
 Layout의 원형 프로필 사진에 onclick을 지정 해준다.
 
-<pre>
-<code>
-de.hdodenhof.circleimageview.CircleImageView
+~~~java
+<de.hdodenhof.circleimageview.CircleImageView
     android:id="@+id/ivProfile"
     android:layout_width="70dp"
     android:layout_height="70dp"
@@ -677,16 +653,14 @@ de.hdodenhof.circleimageview.CircleImageView
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:ignore="OnClick" 
-</code>
-</pre>
+    tools:ignore="OnClick" />
+~~~
 
 
 MainActivity에 프로필 사진을 클릭하게 되면 팝업 창이 나오도록 
 Intent 해준다. 이때 카카오 프로필 사진과 이름을 Activity 간 전송해 주어야 한다.
 
-<pre>
-<code>
+~~~java
 public void mOnPopupClick(View v){
     //데이터 담아서 팝업(액티비티) 호출
     Intent intent = new Intent(MainActivity.this, Main3Activity.class);
@@ -697,13 +671,11 @@ public void mOnPopupClick(View v){
     intent.putExtra("name", strNickname);
     startActivity(intent);
 }
-</code>
-</pre>
+~~~
 
 Dialog창으로 나오지만 상단의 타이틀 바로 나오지 않게 지정한다.
 
-<pre>
-<code>
+~~~java
 String strNickname1, strProfile1;
 
  @Override
@@ -726,13 +698,11 @@ strProfile1 = intent.getStringExtra("profile");
 tvNickname.setText(strNickname1);
 
 Glide.with(this).load(strProfile1).into(ivProfile);
-</code>
-</pre>
+~~~
 
 확인 버튼을 클릭 시 팝업 창을 닫을 수 있도록 한다.
 
-<pre>
-<code>
+~~~java
 public void mOnClose(View v){
     //데이터 전달하기
     Intent intent = new Intent();
@@ -742,14 +712,12 @@ public void mOnClose(View v){
     //액티비티(팝업) 닫기
     finish();
 }
-</code>
-</pre>
+~~~
 
 팝업 창 바깥 레이어 클릭 시에는 팝업 창이 닫히지 않도록 한다.
 또한 스마트폰의 백 버튼 또한 잠궈준다.
 
-<pre>
-<code>
+~~~java
 @Override
 public boolean onTouchEvent(MotionEvent event) {
     //바깥레이어 클릭시 안닫히게
@@ -764,8 +732,7 @@ public void onBackPressed() {
     //안드로이드 백버튼 막기
     return;
 }
-</code>
-</pre>
+~~~
 
 ##### 팝업창 이미지
   
@@ -781,28 +748,23 @@ https://admob.google.com/intl/ko_ALL/home/?gclid=CjwKCAjwrcH3BRApEiwAxjdPTVkrX0s
 
 Build.gradle(app) 에 광고를 하기 위한 코드를 추가한다.
 
-<pre>
-<code>
+~~~java
 implementation 'androidx.appcompat:appcompat:1.0.2'
 implementation 'com.google.android.gms:play-services-ads:19.1.0'
-</code>
-</pre>
+~~~
 
 Menifest에 meta-data를 추가한다.
 Android:value 에는 광고의 ID를 넣게 되는데, 전면광고, 배너광고, 전면 동영상 광고, 보상형 동영상 광고 등 여러 광고마다 ID가 다르다.
 
-<pre>
-<code>
+~~~java
 meta-data
     android:name="com.google.android.gms.ads.APPLICATION_ID"
     android:value="ca-app-pub-3940256099942544~3347511713"
-</code>
-</pre>
+~~~
 
 광고를 넣을 Layout에 광고를 추가하고 크기를 맞춘다.
 
-<pre>
-<code>
+~~~java
 Activity_main.Layout
 FrameLayout
     android:id="@+id/ad_view_container"
@@ -811,13 +773,11 @@ FrameLayout
     android:layout_alignParentBottom="true"
     android:layout_centerInParent="true"
     android:layout_marginTop="660dp" 
-</code>
-</pre>
+~~~
 
 Layout에 맞는 Java 파일에 광고의 초기화 및 여러 설정을 적어준다.
 
-<pre>
-<code>
+~~~java
 private AdView adView;
 private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/9214589741";
 private FrameLayout adContainerView;
@@ -888,8 +848,7 @@ private AdSize getAdSize() {
 
     return AdSize.getCurrentOrientationBannerAdSizeWithWidth(this, adWidth);
 }
-</code>
-</pre>
+~~~
 
 
 
@@ -926,8 +885,7 @@ private AdSize getAdSize() {
 
 ##### 폭탄 프리팹 이미지
 
-<pre>
-<code>
+~~~cs
 public class EffectManager : SingletonMonobehaviour<EffectManager>
 {
 // 이벤트별 이펙트 객체.
@@ -988,15 +946,12 @@ IEnumerator run_dust_effect(GameObject obj, float delay)
 yield return new WaitForSeconds(delay);
 
 obj.SetActive(true); }}
-</code>
-</pre>
-
+~~~
 
 Visual Studio에서 Effect 이미지를 불러와준다.
 또한 이미지 출력 후 1.5초 후 사라지게 해준다.
 
-<pre>
-<code>
+~~~cs
 public class CDelayedDeactive : MonoBehaviour {
 
 [SerializeField]
@@ -1014,8 +969,7 @@ IEnumerator delayed_deactive()
 {
 yield return new WaitForSeconds(this.delay);
 gameObject.SetActive(false);}}
-</code>
-</pre>
+~~~
 
 ##### Sprite Renderer 이미지
 
@@ -1023,8 +977,7 @@ gameObject.SetActive(false);}}
 1고부터 시작되는 고의 경우엔 일반적인 방식으로는 많이 불편하다.
 그래서 Visaul Studio에서 Count하여 각 상황에 맞는 이미지를 순차적으로 넣어주었다.
 
-<pre>
-<code>
+~~~cs
 public class PopupGo : MonoBehaviour
     {
 
@@ -1054,8 +1007,7 @@ this.go_images = new List<Sprite>(); //스프라이트 이미지 불러오기//
         this.go.sprite = this.go_images[howmany_go - 1];
         }
         }
-</code>
-</pre>
+~~~
 
 ##### Popup_go 이미지
 
