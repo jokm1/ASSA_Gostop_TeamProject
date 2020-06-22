@@ -57,6 +57,14 @@
 MySQL 관리 웹페이지로 들어가 회원가입시 기입하는 정보를 저장하는 테이블 생성한다.
 ![sql테이블](https://user-images.githubusercontent.com/62593452/85231107-79507500-b42f-11ea-92d9-59a3e70dccef.PNG)
 
+
+~~~java
+int a;
+int b;
+~~~
+
+
+
 >#### 2-1-2 안드로이드 스튜디오와 서버연결
 Volley API 를 이용한 HTTP 통신을 위해 build.gradle파일에 implementation해준다.
 <pre>
