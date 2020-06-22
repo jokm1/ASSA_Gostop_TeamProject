@@ -1104,7 +1104,7 @@ IEnumerator run_moving()
 ![3번](https://user-images.githubusercontent.com/62593452/85271990-86647700-b4b6-11ea-8e82-ee2896fb3ece.png)
 ![4번](https://user-images.githubusercontent.com/62593452/85271992-86647700-b4b6-11ea-9eb8-73cc7c94b968.png)
 ![1](https://user-images.githubusercontent.com/62593452/85274000-523e8580-b4b9-11ea-801a-488408efa5df.png)
-![2](https://user-images.githubusercontent.com/62593452/85274002-536fb280-b4b9-11ea-89f6-5b3b11b68f23.png)
+
 ![3](https://user-images.githubusercontent.com/62593452/85274004-536fb280-b4b9-11ea-82af-7d54b265be9a.jpg)
 ![4](https://user-images.githubusercontent.com/62593452/85274008-54084900-b4b9-11ea-9d4a-1d112b516681.jpg)
 ![5](https://user-images.githubusercontent.com/62593452/85274010-54a0df80-b4b9-11ea-9499-2070d4b5effb.jpg)
