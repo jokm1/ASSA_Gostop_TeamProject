@@ -58,13 +58,6 @@ MySQL 관리 웹페이지로 들어가 회원가입시 기입하는 정보를 �
 ![sql테이블](https://user-images.githubusercontent.com/62593452/85231107-79507500-b42f-11ea-92d9-59a3e70dccef.PNG)
 
 
-~~~
-<int a;
-int b;/>
-~~~
-
-
-
 >#### 2-1-2 안드로이드 스튜디오와 서버연결
 Volley API 를 이용한 HTTP 통신을 위해 build.gradle파일에 implementation해준다.
 <pre>
@@ -141,16 +134,14 @@ implementation 'com.android.volley:volley:1.1.1'
 [kakao app등록 링크](https://developers.kakao.com/)   
 ![카카오톡등록](https://user-images.githubusercontent.com/62593452/85231709-7c019900-b434-11ea-98f0-0b163564188c.png)   
 Buildgradle(app)파일에 카카오 로그인을 위한 sdk, url을 추가해준다.
-<pre>
-<code>
+
+~~~java
 dependencies {
     implementation 'com.kakao.sdk:usermgmt:1.29.0'
 }
+~~~
 
-</code>
-</pre>
-<pre>
-<code>
+~~~java
 allprojects {
     repositories {
 
@@ -162,8 +153,8 @@ allprojects {
         maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
     }
 }
-</code>
-</pre>
+~~~
+
 manifest파일에 카카오 로그인에 필요한 인터넷연결을 permission하고 AppKey와 네이티브 키를 입력한다.
 <pre>
 <code>
