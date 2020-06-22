@@ -1,8 +1,8 @@
 스마트 모바일 프로그래밍 ASSA 최종 보고서
 ===================================
-
 목차   
 -----
+
 
 ### 1.소개
 >#### 1-1 주제선정이유
@@ -190,9 +190,18 @@ private void getAppKeyHash() {
 >### 2-2 Google Map
 Google Map을 기반으로 지도를 구현한다.    
 Google Map에 엑세스하기 위해서는 최소 SDK레벨 2.0 이여야한다.   
-1)Google 계정 및 GoogleMap 계정 및 API Key 발급받는다.   
-2)Google console developer 사이트에 방문하여 새 프로젝트를 생성 후 API Key발급받고   
-AndroidManifest.xml파일에 추가해준다.
+1)Google console developer 사이트에 방문하여 새 프로젝트를 생성한다. 
+(https://user-images.githubusercontent.com/62593452/85274012-55397600-b4b9-11ea-9238-02ee0d58d6bb.png)
+(https://user-images.githubusercontent.com/62593452/85274017-55d20c80-b4b9-11ea-9f43-df94531c21bb.png)
+(https://user-images.githubusercontent.com/62593452/85274020-55d20c80-b4b9-11ea-8d8a-d5347e500a69.png)
+
+2)생성 후 Google Maps JavaScript API를 선택 후 사용설정 클릭한다.
+(https://user-images.githubusercontent.com/62593452/85274022-566aa300-b4b9-11ea-80de-5077f149c8d6.png)
+
+3)사용자 인증 정보 만들기 클릭 -> 만든 구글 프로젝트로 설정한 후 API키 발급한다. 
+(https://user-images.githubusercontent.com/62593452/85274023-566aa300-b4b9-11ea-9a2b-8c6ed9d12c78.png)
+
+4)AndroidManifest.xml파일에 추가해준다.
 ~~~java
  meta-data
     android:name="com.google.android.geo.API_KEY"
@@ -1169,17 +1178,3 @@ IEnumerator run_moving()
 	}
 ~~~
 
-![1번](https://user-images.githubusercontent.com/62593452/85271987-85334a00-b4b6-11ea-815a-d70b1c88d82c.png)
-![2번](https://user-images.githubusercontent.com/62593452/85271989-85cbe080-b4b6-11ea-9120-dd85b49ebcf0.png)
-![3번](https://user-images.githubusercontent.com/62593452/85271990-86647700-b4b6-11ea-8e82-ee2896fb3ece.png)
-![4번](https://user-images.githubusercontent.com/62593452/85271992-86647700-b4b6-11ea-9eb8-73cc7c94b968.png)
-
-
-
-
-
-![6](https://user-images.githubusercontent.com/62593452/85274012-55397600-b4b9-11ea-9238-02ee0d58d6bb.png)
-![7](https://user-images.githubusercontent.com/62593452/85274017-55d20c80-b4b9-11ea-9f43-df94531c21bb.png)
-![8](https://user-images.githubusercontent.com/62593452/85274020-55d20c80-b4b9-11ea-8d8a-d5347e500a69.png)
-![9](https://user-images.githubusercontent.com/62593452/85274022-566aa300-b4b9-11ea-80de-5077f149c8d6.png)
-![10](https://user-images.githubusercontent.com/62593452/85274023-566aa300-b4b9-11ea-9a2b-8c6ed9d12c78.png)
