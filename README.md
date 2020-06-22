@@ -658,13 +658,10 @@ Glide.with(this).load(strProfile).into(ivProfile);
 
 Menifest파일에 팝업창으로 열기 위해 테마를 Dialog로 지정해 준다.
 
-<pre>
-<code>
+
 
 <activity android:name=".Main3Activity" android:theme="@android:style/Theme.Dialog" />
 
-</code>
-</pre>
 
 Layout의 원형 프로필 사진에 onclick을 지정 해준다.
 
