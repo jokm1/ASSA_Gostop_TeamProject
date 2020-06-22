@@ -66,9 +66,7 @@ implementation 'com.android.volley:volley:1.1.1'
 
 안드로이드 스튜디오에서 서버로 정보를 전송하기위한 Login.php / Register.php 파일을 생성한다.   
 ##### Login.php
-<pre>
-<code>
-
+~~~php
     $con = mysqli_connect("localhost", "assa", "tkdaud1!", "assa");
     mysqli_query($con,'SET NAMES utf8');
 
@@ -95,13 +93,10 @@ implementation 'com.android.volley:volley:1.1.1'
     }
 
     echo json_encode($response);
-
-</code>
-</pre>
+~~~
 
 ##### Register.php
-<pre>
-<code>
+~~~php
     $con = mysqli_connect("localhost", "assa", "tkdaud1!", "assa");
     mysqli_query($con,'SET NAMES utf8');
 
@@ -120,8 +115,7 @@ implementation 'com.android.volley:volley:1.1.1'
  
    
     echo json_encode($response);
-</code>
-</pre>
+~~~
 
 2개의 파일을 FileZilla를 이용하여 html폴더에 추가해준다.    
 ![fillzilla](https://user-images.githubusercontent.com/62593452/85231104-76558480-b42f-11ea-8bfa-6faaf3dd6ac2.PNG)   
@@ -135,9 +129,7 @@ implementation 'com.android.volley:volley:1.1.1'
 Buildgradle(app)파일에 카카오 로그인을 위한 sdk, url을 추가해준다.
 
 ~~~java
-advanced: {
-    codeStyle: 'dark'
-  }
+
 dependencies {
     implementation 'com.kakao.sdk:usermgmt:1.29.0'
 }
