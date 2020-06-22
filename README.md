@@ -660,7 +660,7 @@ Menifest파일에 팝업창으로 열기 위해 테마를 Dialog로 지정해 �
 
 <pre>
 <code>
-<activity android:name=".Main3Activity" android:theme="@android:style/Theme.Dialog"
+<activity android:name=".Main3Activity" android:theme="@android:style/Theme.Dialog">
 </code>
 </pre>
 
@@ -682,6 +682,7 @@ Layout의 원형 프로필 사진에 onclick을 지정 해준다.
     tools:ignore="OnClick" />
 </code>
 </pre>
+
 
 MainActivity에 프로필 사진을 클릭하게 되면 팝업 창이 나오도록 
 Intent 해준다. 이때 카카오 프로필 사진과 이름을 Activity 간 전송해 주어야 한다.
