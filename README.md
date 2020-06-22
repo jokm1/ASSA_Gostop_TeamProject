@@ -60,11 +60,10 @@ MySQL 관리 웹페이지로 들어가 회원가입시 기입하는 정보를 �
 
 >#### 2-1-2 안드로이드 스튜디오와 서버연결
 Volley API 를 이용한 HTTP 통신을 위해 build.gradle파일에 implementation해준다.
-<pre>
-<code>
+~~~xml
 implementation 'com.android.volley:volley:1.1.1'
-</code>
-</pre>
+~~~
+
 안드로이드 스튜디오에서 서버로 정보를 전송하기위한 Login.php / Register.php 파일을 생성한다.   
 ##### Login.php
 <pre>
