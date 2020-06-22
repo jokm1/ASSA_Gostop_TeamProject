@@ -768,7 +768,7 @@ btnLogout.setOnClickListener(new Button.OnClickListener() {
 
 
 ##### 팝업창 이미지
-![팝업창이미지](https://user-images.githubusercontent.com/62593452/85271959-79e01e80-b4b6-11ea-9ca9-593d1f714428.jpg)  
+![팝업창이미지]<img src="https://user-images.githubusercontent.com/62869017/85279810-03e1b480-b4c2-11ea-84d0-a49e142eb5d1.jpg" width="40%">
 
 
 2-3-3 수익성 측면
@@ -891,8 +891,8 @@ private AdSize getAdSize() {
 하단 배너에 광고가 나오게 된다.
 
 ##### 광고 이미지
-![광고이미지]<img src="https://user-images.githubusercontent.com/62869017/85280254-bca7f380-b4c2-11ea-8c0c-48fd2f7a0051.jpg" width="40%">
-![광고이미지2]<img src="https://user-images.githubusercontent.com/62869017/85279527-861da900-b4c1-11ea-9e66-0fd08a7656c1.png" width="40%">
+<img src="https://user-images.githubusercontent.com/62869017/85280254-bca7f380-b4c2-11ea-8c0c-48fd2f7a0051.jpg" width="40%">
+<img src="https://user-images.githubusercontent.com/62869017/85279527-861da900-b4c1-11ea-9e66-0fd08a7656c1.png" width="40%">
 
 
 
@@ -1104,11 +1104,11 @@ IEnumerator run_moving()
 ![2번](https://user-images.githubusercontent.com/62593452/85271989-85cbe080-b4b6-11ea-9120-dd85b49ebcf0.png)
 ![3번](https://user-images.githubusercontent.com/62593452/85271990-86647700-b4b6-11ea-8e82-ee2896fb3ece.png)
 ![4번](https://user-images.githubusercontent.com/62593452/85271992-86647700-b4b6-11ea-9eb8-73cc7c94b968.png)
-![1](https://user-images.githubusercontent.com/62593452/85274000-523e8580-b4b9-11ea-801a-488408efa5df.png)
 
-![3](https://user-images.githubusercontent.com/62593452/85274004-536fb280-b4b9-11ea-82af-7d54b265be9a.jpg)
-![4](https://user-images.githubusercontent.com/62593452/85274008-54084900-b4b9-11ea-9d4a-1d112b516681.jpg)
-![5](https://user-images.githubusercontent.com/62593452/85274010-54a0df80-b4b9-11ea-9499-2070d4b5effb.jpg)
+
+
+
+
 ![6](https://user-images.githubusercontent.com/62593452/85274012-55397600-b4b9-11ea-9238-02ee0d58d6bb.png)
 ![7](https://user-images.githubusercontent.com/62593452/85274017-55d20c80-b4b9-11ea-9f43-df94531c21bb.png)
 ![8](https://user-images.githubusercontent.com/62593452/85274020-55d20c80-b4b9-11ea-8d8a-d5347e500a69.png)
