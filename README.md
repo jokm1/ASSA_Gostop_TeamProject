@@ -768,7 +768,7 @@ btnLogout.setOnClickListener(new Button.OnClickListener() {
 
 
 ##### 팝업창 이미지
-![팝업창이미지]<img src="https://user-images.githubusercontent.com/62869017/85279810-03e1b480-b4c2-11ea-84d0-a49e142eb5d1.jpg" width="40%">
+<img src="https://user-images.githubusercontent.com/62869017/85279810-03e1b480-b4c2-11ea-84d0-a49e142eb5d1.jpg" width="40%">
 
 
 2-3-3 수익성 측면
@@ -1058,6 +1058,75 @@ this.go_images = new List<Sprite>(); //스프라이트 이미지 불러오기//
 
 >>>##### 2-4-2-1 효과음
 효과음이 필요한 오브젝트가 많아 오브젝트마다 효과음을 넣으면 비효율적이어서 효과음 오브젝트를 만들어서 효과음이 필요한 부분에 각자 코드로 적용시켜 효율적인 효과음 재생이 가능하다.
+
+
+카드가 움직일 때마다 소리를 재생하기
+Unity의 Hierarchy에 SoundManager를 만든 후 Audio Source를 추가하여 준다.
+
+![2번](https://user-images.githubusercontent.com/62593452/85271989-85cbe080-b4b6-11ea-9120-dd85b49ebcf0.png)
+
+Audio Source에 카드 소리를 넣어주고 Play On Awake를 해제하여 준다.
+![4번](https://user-images.githubusercontent.com/62593452/85271992-86647700-b4b6-11ea-9eb8-73cc7c94b968.png)
+
+SoundManager의 Script를 작성한다.
+~~~cs
+public class SoundManager : MonoBehaviour
+        {
+public AudioClip soundPlace;
+        AudioSource myAudio;
+
+public static SoundManager instance;
+
+        void Awake()
+        {
+        if(SoundManager.instance == null)
+        {
+        SoundManager.instance = this;
+        }
+        }
+        void Start()
+        {
+        myAudio = GetComponent<AudioSource>();
+        }
+
+public void PlaySound()
+        {
+        myAudio.PlayOneShot(soundPlace);
+        }
+}
+~~~
+
+카드의 움직임 마다 소리가 재생되게 하기위해 MovingObject의 IEnumerator 밑에
+적어준다.
+~~~cs
+    IEnumerator run_moving()
+    {
+        this.sprite_renderer.sortingOrder = CSpriteLayerOrderManager.Instance.Order;
+
+        float begin_time = Time.time;
+        while (Time.time - begin_time <= duration) //카드날라가기//
+        {
+            float t = (Time.time - begin_time) / duration;
+
+            float x = EasingUtil.easeInExpo(begin.x, to.x, t);
+            float y = EasingUtil.easeInExpo(begin.y, to.y, t);
+            transform.position = new Vector3(x, y, begin.z);
+
+            yield return 0;
+        }
+        SoundManager.instance.PlaySound();
+        transform.position = to;
+    }
+}
+~~~
+
+각종 Effect 생성 시에만 소리가 재생되게 하기
+예를 들어 폭탄 Effect가 생성 시에만 소리가 나오게 하기 위해서는 
+PreFab의 폭탄 Sprite에 Audio Source를 추가한다.
+Play On Awake를 활성화 한다.
+![1번](https://user-images.githubusercontent.com/62593452/85271987-85334a00-b4b6-11ea-815a-d70b1c88d82c.png)
+
+
 >>>##### 2-4-2-2 카드 효과(Card Hitting)
 전체적인 카드의 움직임은 앱을 구동시키는 기기의 성능에 따라 움직임이 자연스러워 보이기도 하고 부자연스러워 보이기도 하기에 최대한 성능에 구애받지 않는 퍼포먼스를 보여주기 위해 Time.time을 이용해 시간이 흘러가는것에 따라 카드의 움직임을 조절가능하게 하였다.
 >>>##### 2-4-2-3 보간 함수
