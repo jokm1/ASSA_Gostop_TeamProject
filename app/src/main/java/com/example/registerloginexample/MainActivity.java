@@ -478,25 +478,9 @@ public class MainActivity extends AppCompatActivity
 
         if (marker.getTitle().equals("내 위치"))
         {
+            Intent intent = new Intent(MainActivity.this, UnityPlayerActivity.class);
 
-
-                if(distanceMeter3<=15)
-                {
-
-                    Intent intent = new Intent(MainActivity.this, UnityPlayerActivity.class);
-
-                    startActivity(intent);
-
-
-                }
-                else
-                {
-
-                    Toast.makeText(getApplicationContext(), "NPC 안서동보와의 거리가 "+ i3 + "M만큼 떨어져 있습니다.", Toast.LENGTH_LONG).show();
-                }
-
-
-
+            startActivity(intent);
 
         }
 

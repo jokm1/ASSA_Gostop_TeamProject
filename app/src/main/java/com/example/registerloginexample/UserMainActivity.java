@@ -443,6 +443,20 @@ public class UserMainActivity extends AppCompatActivity
                 int i9 = Integer.parseInt(String.valueOf(Math.round(distanceMeter9)));
 
 
+
+                if (marker.getTitle().equals("내 위치"))
+                {
+                    Intent intent = new Intent(UserMainActivity.this, UnityPlayerActivity.class);
+
+                    startActivity(intent);
+
+                }
+
+
+
+
+
+
                 if (marker.getTitle().equals("안서 동보아파트"))
                 {
                     if(distanceMeter3<=15) {
