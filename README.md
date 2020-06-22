@@ -660,10 +660,7 @@ Menifest파일에 팝업창으로 열기 위해 테마를 Dialog로 지정해 �
 
 <pre>
 <code>
-
 activity android:name=".Main3Activity" android:theme="@android:style/Theme.Dialog"
-
-
 </code>
 </pre>
 
@@ -671,7 +668,6 @@ Layout의 원형 프로필 사진에 onclick을 지정 해준다.
 
 <pre>
 <code>
-
 de.hdodenhof.circleimageview.CircleImageView
     android:id="@+id/ivProfile"
     android:layout_width="70dp"
@@ -683,8 +679,7 @@ de.hdodenhof.circleimageview.CircleImageView
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:ignore="OnClick"
-    
+    tools:ignore="OnClick" 
 </code>
 </pre>
 
@@ -800,9 +795,9 @@ Android:value 에는 광고의 ID를 넣게 되는데, 전면광고, 배너광�
 
 <pre>
 <code>
-<meta-data
+meta-data
     android:name="com.google.android.gms.ads.APPLICATION_ID"
-    android:value="ca-app-pub-3940256099942544~3347511713"/>
+    android:value="ca-app-pub-3940256099942544~3347511713"
 </code>
 </pre>
 
@@ -811,13 +806,13 @@ Android:value 에는 광고의 ID를 넣게 되는데, 전면광고, 배너광�
 <pre>
 <code>
 Activity_main.Layout
-<FrameLayout
+FrameLayout
     android:id="@+id/ad_view_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:layout_centerInParent="true"
-    android:layout_marginTop="660dp" />
+    android:layout_marginTop="660dp" 
 </code>
 </pre>
 
