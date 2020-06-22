@@ -660,9 +660,10 @@ Menifest파일에 팝업창으로 열기 위해 테마를 Dialog로 지정해 �
 
 <pre>
 <code>
-<activity android:name=".Main3Activity" android:theme="@android:style/Theme.Dialog">
 
-sdjfjkjlsad
+activity android:name=".Main3Activity" android:theme="@android:style/Theme.Dialog"
+
+
 </code>
 </pre>
 
@@ -670,7 +671,8 @@ Layout의 원형 프로필 사진에 onclick을 지정 해준다.
 
 <pre>
 <code>
-<de.hdodenhof.circleimageview.CircleImageView
+
+de.hdodenhof.circleimageview.CircleImageView
     android:id="@+id/ivProfile"
     android:layout_width="70dp"
     android:layout_height="70dp"
@@ -681,7 +683,8 @@ Layout의 원형 프로필 사진에 onclick을 지정 해준다.
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:ignore="OnClick" />
+    tools:ignore="OnClick"
+    
 </code>
 </pre>
 
