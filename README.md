@@ -891,8 +891,9 @@ private AdSize getAdSize() {
 하단 배너에 광고가 나오게 된다.
 
 ##### 광고 이미지
-![광고이미지](https://user-images.githubusercontent.com/62593452/85271974-7f3d6900-b4b6-11ea-8b66-36339807c626.jpg)
-![광고이미지2](https://user-images.githubusercontent.com/62593452/85271976-7fd5ff80-b4b6-11ea-95f6-9c43f76e6abb.jpg)    
+![광고이미지]<img src="https://user-images.githubusercontent.com/62869017/85280254-bca7f380-b4c2-11ea-8c0c-48fd2f7a0051.jpg" width="40%">
+![광고이미지2]<img src="https://user-images.githubusercontent.com/62869017/85279527-861da900-b4c1-11ea-9e66-0fd08a7656c1.png" width="40%">
+
 
 
 
