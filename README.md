@@ -652,6 +652,257 @@ Glide.with(this).load(strProfile).into(ivProfile);
 ![원형프로필]
 
     
+2-3-2 팝업창
+지도가 나오는 화면에서 카카오 로그인 시에는 왼쪽 상단에 자신의 카카오 프로필 사진이 나오며, 일반 로그인 시에는 지정된 이미지가 나오게 된다.
+그리고 이미지를 클릭 시 팝업 창이 나오며 카카오 로그인 시에는 이름이, 일반 로그인 시에는 가입할 때 사용한 아이디가 나오며 로그아웃 버튼 또한 있다.
+
+Menifest파일에 팝업창으로 열기 위해 테마를 Dialog로 지정해 준다.
+
+<pre>
+<code>
+<activity android:name=".Main3Activity" android:theme="@android:style/Theme.Dialog" />
+</code>
+</pre>
+
+Layout의 원형 프로필 사진에 onclick을 지정 해준다.
+
+<pre>
+<code>
+<de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/ivProfile"
+    android:layout_width="70dp"
+    android:layout_height="70dp"
+    android:layout_marginLeft="10dp"
+
+    android:layout_marginTop="10dp"
+    android:onClick="mOnPopupClick"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:ignore="OnClick" />
+</code>
+</pre>
+
+MainActivity에 프로필 사진을 클릭하게 되면 팝업 창이 나오도록 
+Intent 해준다. 이때 카카오 프로필 사진과 이름을 Activity 간 전송해 주어야 한다.
+
+<pre>
+<code>
+public void mOnPopupClick(View v){
+    //데이터 담아서 팝업(액티비티) 호출
+    Intent intent = new Intent(MainActivity.this, Main3Activity.class);
+
+    intent.putExtra("profile", strProfile);
+
+
+    intent.putExtra("name", strNickname);
+    startActivity(intent);
+}
+</code>
+</pre>
+
+Dialog창으로 나오지만 상단의 타이틀 바로 나오지 않게 지정한다.
+
+<pre>
+<code>
+String strNickname1, strProfile1;
+
+ @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //타이틀바 없애기
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activitiy_main3);
+        Button btnLogout = findViewById(R.id.logoutbtn);
+        //UI 객체생성
+
+MainActivty에서 보낸 이름과 프로필 사진을 다시 받고 현재의 Layout에 지정하여 준다.
+TextView tvNickname = findViewById(R.id.Nik);
+ImageView ivProfile = findViewById(R.id.ivProfile);
+
+//데이터 가져오기
+Intent intent = getIntent();
+strNickname1 = intent.getStringExtra("name");
+strProfile1 = intent.getStringExtra("profile");
+tvNickname.setText(strNickname1);
+
+Glide.with(this).load(strProfile1).into(ivProfile);
+</code>
+</pre>
+
+확인 버튼을 클릭 시 팝업 창을 닫을 수 있도록 한다.
+
+<pre>
+<code>
+public void mOnClose(View v){
+    //데이터 전달하기
+    Intent intent = new Intent();
+    intent.putExtra("result", "Close Popup");
+    setResult(RESULT_OK, intent);
+
+    //액티비티(팝업) 닫기
+    finish();
+}
+</code>
+</pre>
+
+팝업 창 바깥 레이어 클릭 시에는 팝업 창이 닫히지 않도록 한다.
+또한 스마트폰의 백 버튼 또한 잠궈준다.
+
+<pre>
+<code>
+@Override
+public boolean onTouchEvent(MotionEvent event) {
+    //바깥레이어 클릭시 안닫히게
+    if(event.getAction()==MotionEvent.ACTION_OUTSIDE){
+        return false;
+    }
+    return true;
+}
+
+@Override
+public void onBackPressed() {
+    //안드로이드 백버튼 막기
+    return;
+}
+</code>
+</pre>
+
+##### 팝업창 이미지
+  
+
+
+2-3-3 수익성 측면
+수익성을 얻기 위해 LoginActivity와 MainActivity에 하단 배너 광고를 추가하였다
+Google AdMob에 가입한 후 APP을 등록 한다.
+
+##### Google AdMob 이미지
+
+https://admob.google.com/intl/ko_ALL/home/?gclid=CjwKCAjwrcH3BRApEiwAxjdPTVkrX0stPQB6hiwrMiF_L6b4KOwC7RZXPFJ13Z7h87UP6IGMh-p2QxoCi-sQAvD_BwE
+
+Build.gradle(app) 에 광고를 하기 위한 코드를 추가한다.
+
+<pre>
+<code>
+implementation 'androidx.appcompat:appcompat:1.0.2'
+implementation 'com.google.android.gms:play-services-ads:19.1.0'
+</code>
+</pre>
+
+Menifest에 meta-data를 추가한다.
+Android:value 에는 광고의 ID를 넣게 되는데, 전면광고, 배너광고, 전면 동영상 광고, 보상형 동영상 광고 등 여러 광고마다 ID가 다르다.
+
+<pre>
+<code>
+<meta-data
+    android:name="com.google.android.gms.ads.APPLICATION_ID"
+    android:value="ca-app-pub-3940256099942544~3347511713"/>
+</code>
+</pre>
+
+광고를 넣을 Layout에 광고를 추가하고 크기를 맞춘다.
+
+<pre>
+<code>
+Activity_main.Layout
+<FrameLayout
+    android:id="@+id/ad_view_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_centerInParent="true"
+    android:layout_marginTop="660dp" />
+</code>
+</pre>
+
+Layout에 맞는 Java 파일에 광고의 초기화 및 여러 설정을 적어준다.
+
+<pre>
+<code>
+private AdView adView;
+private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/9214589741";
+private FrameLayout adContainerView;
+
+MobileAds.initialize(this, new OnInitializationCompleteListener() {
+    @Override
+    public void onInitializationComplete(InitializationStatus initializationStatus) {}
+});
+
+// Set your test devices. Check your logcat output for the hashed device ID to
+// get test ads on a physical device. e.g.
+// "Use RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345"))
+// to get test ads on this device."
+MobileAds.setRequestConfiguration(
+        new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
+
+adContainerView = findViewById(R.id.ad_view_container);
+
+// Since we're loading the banner based on the adContainerView size, we need to wait until this
+// view is laid out before we can get the width.
+adContainerView.post(new Runnable() {
+    @Override
+    public void run() {
+        loadBanner();
+    }
+});
+/** Called when leaving the activity */
+@Override
+public void onPause() {
+    if (adView != null) {
+        adView.pause();
+    }
+    super.onPause();
+}
+
+private void loadBanner() {
+    // Create an ad request.
+    adView = new AdView(this);
+    adView.setAdUnitId(AD_UNIT_ID);
+    adContainerView.removeAllViews();
+    adContainerView.addView(adView);
+
+    AdSize adSize = getAdSize();
+    adView.setAdSize(adSize);
+
+    AdRequest adRequest = new AdRequest.Builder().build();
+
+    // Start loading the ad in the background.
+    adView.loadAd(adRequest);
+}
+
+private AdSize getAdSize() {
+    // Determine the screen width (less decorations) to use for the ad width.
+    Display display = getWindowManager().getDefaultDisplay();
+    DisplayMetrics outMetrics = new DisplayMetrics();
+    display.getMetrics(outMetrics);
+
+    float density = outMetrics.density;
+
+    float adWidthPixels = adContainerView.getWidth();
+
+    // If the ad hasn't been laid out, default to the full screen width.
+    if (adWidthPixels == 0) {
+        adWidthPixels = outMetrics.widthPixels;
+    }
+
+    int adWidth = (int) (adWidthPixels / density);
+
+    return AdSize.getCurrentOrientationBannerAdSizeWithWidth(this, adWidth);
+}
+</code>
+</pre>
+
+
+
+
+
+하단 배너에 광고가 나오게 된다.
+
+##### 광고 이미지
+  
+
+
+
 
 
 
@@ -666,6 +917,149 @@ Glide.with(this).load(strProfile).into(ivProfile);
 >>>##### 2-4-1-2 AI
 
 >>#### 2-4-2 특수효과
+고스톱을 하다 보면 특정한 상황 발생 시 그에 맞는 오브젝트가 나와야 한다.
+그런 상황에 맞는 오브젝트를 만들어 상황이 발생하게 되면 Instance 시킨다.
+
+##### 아틀라스 이미지
+  
+예를 들어 폭탄의 경우를 설명하자면 이미지들을 아틀라스하여 자른 후
+프리팹을 만들어 Sprite를 지정해준다
+
+##### 폭탄 프리팹 이미지
+
+<pre>
+<code>
+public class EffectManager : SingletonMonobehaviour<EffectManager>
+{
+// 이벤트별 이펙트 객체.
+Dictionary<CARD_EVENT_TYPE, GameObject> effects;
+GameObject dust;
+
+
+void Awake()
+{
+this.effects = new Dictionary<CARD_EVENT_TYPE, GameObject>();
+}
+
+
+public void load_effects()
+{
+load_effect(CARD_EVENT_TYPE.BOMB, "ef_explosion");
+}
+
+
+void load_effect(CARD_EVENT_TYPE event_type, string effect_name)
+{
+if (this.effects.ContainsKey(event_type))
+{
+Debug.LogError(string.Format("Already added this effect.  event type {0}, effect name {1}",
+event_type, effect_name));
+}
+
+GameObject obj = GameObject.Instantiate(Resources.Load("effects/" + effect_name)) as GameObject;
+
+obj.SetActive(false);
+this.effects.Add(event_type, obj);
+}
+
+
+public void play(CARD_EVENT_TYPE event_type)
+{
+if (!this.effects.ContainsKey(event_type))
+{
+return;
+}
+
+this.effects[event_type].SetActive(true);
+}
+
+
+public void play_dust(Vector3 position, float delay, bool is_big)
+{
+StopAllCoroutines();
+GameObject target = this.dust;
+
+target.SetActive(false);
+target.transform.position = position;
+StartCoroutine(run_dust_effect(target, delay));
+}
+
+IEnumerator run_dust_effect(GameObject obj, float delay)
+{
+yield return new WaitForSeconds(delay);
+
+obj.SetActive(true); }}
+</code>
+</pre>
+
+
+Visual Studio에서 Effect 이미지를 불러와준다.
+또한 이미지 출력 후 1.5초 후 사라지게 해준다.
+
+<pre>
+<code>
+public class CDelayedDeactive : MonoBehaviour {
+
+[SerializeField]
+float delay;
+
+
+void OnEnable() //검정대기화면//
+{
+StopAllCoroutines();
+StartCoroutine(delayed_deactive());
+}
+
+
+IEnumerator delayed_deactive()
+{
+yield return new WaitForSeconds(this.delay);
+gameObject.SetActive(false);}}
+</code>
+</pre>
+
+##### Sprite Renderer 이미지
+
+1고,2고… 의 경우
+1고부터 시작되는 고의 경우엔 일반적인 방식으로는 많이 불편하다.
+그래서 Visaul Studio에서 Count하여 각 상황에 맞는 이미지를 순차적으로 넣어주었다.
+
+<pre>
+<code>
+public class PopupGo : MonoBehaviour
+    {
+
+    List<Sprite> go_images;
+Image go;
+
+void Awake()
+{
+this.go_images = new List<Sprite>(); //스프라이트 이미지 불러오기//
+    for (int i = 1; i <= 9; ++i) //for문 i를 1~9까지 돌린다//
+    {
+    Sprite spr = CSpriteManager.Instance.get_sprite(string.Format("go_{0:D2}", i));  //CSpriteManager에서 아틀라스한 이미지 중 go_01~go_09까지 불러온다//
+    this.go_images.Add(spr); //이미지를 spr에 더한다//
+    }
+
+    this.go = transform.Find("image").GetComponent<Image>(); //Hierarchy의 image를 찾아 넣는다//
+        }
+
+
+        public void refresh(int howmany_go) //go이미지를 하나 넣을때마다 refesh하여 다음 이미지를 넣게 한다.//
+        {
+        if (howmany_go <= 0 || howmany_go >= 10)
+        {
+        return;
+        }
+
+        this.go.sprite = this.go_images[howmany_go - 1];
+        }
+        }
+</code>
+</pre>
+
+##### Popup_go 이미지
+
 >>>##### 2-4-2-1 효과음
 효과음이 필요한 오브젝트가 많아 오브젝트마다 효과음을 넣으면 비효율적이어서 효과음 오브젝트를 만들어서 효과음이 필요한 부분에 각자 코드로 적용시켜 효율적인 효과음 재생이 가능하다.
 >>>##### 2-4-2-2 카드 효과(Card Hitting)
