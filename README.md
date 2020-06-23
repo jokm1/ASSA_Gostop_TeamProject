@@ -1046,8 +1046,8 @@ gameObject.SetActive(false);}}
 ##### Sprite Renderer 이미지
 ![Sprite이미지](https://user-images.githubusercontent.com/62593452/85271981-81072c80-b4b6-11ea-986f-63266014fc37.png)
 
+##### 1고,2고… 의 경우
 
-1고,2고… 의 경우
 1고부터 시작되는 고의 경우엔 일반적인 방식으로는 많이 불편하다.
 그래서 Visaul Studio에서 Count하여 각 상황에 맞는 이미지를 순차적으로 넣어주었다.
 
