@@ -129,7 +129,7 @@ public class UnityPlayerActivity2 extends Activity implements IUnityPlayerLifecy
         mUnityPlayer.windowFocusChanged(hasFocus);
         if(mUnityPlayer.hasFocus() == false)
         {
-            Intent intent = new Intent(UnityPlayerActivity2.this, MainActivity.class);
+            Intent intent = new Intent(UnityPlayerActivity2.this, UserMainActivity.class);
             startActivity(intent);
         }
     }

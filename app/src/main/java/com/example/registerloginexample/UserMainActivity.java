@@ -446,7 +446,7 @@ public class UserMainActivity extends AppCompatActivity
 
                 if (marker.getTitle().equals("내 위치"))
                 {
-                    Intent intent = new Intent(UserMainActivity.this, UnityPlayerActivity.class);
+                    Intent intent = new Intent(UserMainActivity.this, UnityPlayerActivity2.class);
 
                     startActivity(intent);
 
