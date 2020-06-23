@@ -184,6 +184,8 @@ private void getAppKeyHash() {
 ##### logcat창에 나오는 HashKey
 ![해시키](https://user-images.githubusercontent.com/62593452/85231710-7c9a2f80-b434-11ea-8124-d118791b0e7b.png)    
 ##### 해시 키 등록
+<span style="color:red">내용</span>
+
 ![해시키등록](https://user-images.githubusercontent.com/62593452/85231707-7ad06c00-b434-11ea-8227-65cfb3187d6c.png)     
 
 
