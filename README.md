@@ -274,6 +274,16 @@ btn_login.setOnClickListener(new View.OnClickListener() {
 로그인을 하는 LoginActivity에서 회원가입 버튼을 만들고, Button ClickListener를 이용하여  
 사용자의 아이디를 MainActivity로 보내게 된다.
 
+##### 로그인 시 키보드의 영향 방지
+
+로그인을 하려고 하게되면 키보드가 올라와 레이아웃에 영향을 줄 때가 있다.  
+이럴 때 manifest에 하단의 코드를 입력해 준다면 키보드의 레이아웃 영향을 방지할 수있다.
+~~~java
+android:windowSoftInputMode="adjustResize"
+~~~
+
+<img src="https://user-images.githubusercontent.com/62869017/85398434-2f32d500-b590-11ea-9309-680634a6c466.jpg" width="40%">
+
 
 >#### 2-1-4 카카오 로그인
 카카오톡은 대한민국에서 가장 큰 sns로 우리나라의 국민 전부가 쓰고 있다고 해도 과언이 아닌 어플로, 카카오 로그인을 통하여 간편하게 어플을 즐길 수 있도록 하였다. 
