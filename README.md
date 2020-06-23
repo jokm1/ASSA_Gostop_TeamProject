@@ -796,7 +796,7 @@ btnLogout.setOnClickListener(new Button.OnClickListener() {
 
 
 
-##### 팝업창 이미지
+##### 팝업창의 로그아웃 버튼 이미지
 <img src="https://user-images.githubusercontent.com/62869017/85279810-03e1b480-b4c2-11ea-84d0-a49e142eb5d1.jpg" width="40%">
 
 
