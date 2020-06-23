@@ -13,7 +13,8 @@
 >#### 2-1 로그인 및 회원가입
 >>##### 2-1-1 서버구축
 >>##### 2-1-2 안드로이드 스튜디오와 서버연결
->>##### 2-1-3 카카오 로그인
+>>##### 2-1-3 회원가입 및 로그인
+>>##### 2-1-4 카카오 로그인
 >#### 2-2 Google Map
 >>##### 2-2-1 지도상 내위치 표시
 >>##### 2-2-2 지도상 대결상대 표시
@@ -124,8 +125,152 @@ implementation 'com.android.volley:volley:1.1.1'
 2개의 파일을 FileZilla를 이용하여 html폴더에 추가해준다.    
 ![fillzilla](https://user-images.githubusercontent.com/62593452/85231104-76558480-b42f-11ea-8bfa-6faaf3dd6ac2.PNG)   
 
+>#### 2-1-3 회원가입 및 로그인
 
->#### 2-1-3 카카오 로그인
+~~~java
+public class RegisterActivity extends AppCompatActivity {
+
+    private EditText et_id, et_pass, et_name, et_age;
+    private Button btn_register;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register);
+
+        et_id = findViewById(R.id.et_id);
+        et_pass = findViewById(R.id.et_pass);
+        et_name = findViewById(R.id.et_name);
+        et_age = findViewById(R.id.et_age);
+        btn_register = findViewById(R.id.btn_register);
+        btn_register.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //EditText에 입력되있는값을 가져온다.
+                String userID = et_id.getText().toString();
+                String userPass = et_pass.getText().toString();
+                String userName = et_name.getText().toString();
+                int userAge = Integer.parseInt(et_age.getText().toString());
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+                            if (success) { //회원등록 성공시
+                                Toast.makeText(getApplicationContext(), "회원가입에 성공하였습니다.",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                startActivity(intent);
+
+                            } else { //회원등록 실패시
+                                Toast.makeText(getApplicationContext(), "회원가입에 실패하였습니다.",Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+
+                RegisterRequest registerRequest = new RegisterRequest(userID,userPass,userName,userAge, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
+                queue.add(registerRequest);
+
+            }
+        });}}
+~~~
+
+~~~java
+public class RegisterRequest extends StringRequest {
+
+    //서버 URL 설정 (php파일 연동)
+    final static private String URL = "http://assa.dothome.co.kr/Register.php";
+    private Map<String, String> map;
+
+
+    public RegisterRequest(String userID, String userPassword, String userName, int userAge, Response.Listener<String> listener){
+        super(Method.POST, URL, listener, null);
+
+        map = new HashMap<>();
+        map.put("userID",userID);
+        map.put("userPassword", userPassword);
+        map.put("userName", userName);
+        map.put("userAge", userAge + "");
+    }
+
+    @Override
+    protected Map<String, String> getParams() throws AuthFailureError {
+        return map;
+    }
+}
+~~~
+
+회원가입을 위해 RegisterActivity와 RegisterRequset를 작성한다.
+RegisterRequest는 서버에 사용자의 정보를 보내며, RegisterActivity는 회원가입 화면을 보여주며 정보를 저장한다.
+
+~~~java
+btn_register.setOnClickListener(new View.OnClickListener() {//회원가입 버튼 클릭시
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
+    }
+});
+
+btn_login.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String userID = et_id.getText().toString();
+            String userPass = et_pass.getText().toString();
+
+
+
+
+
+            Response.Listener<String> responseListener = new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        boolean success = jsonObject.getBoolean("success");
+                        if (success) {
+                            String userID = jsonObject.getString("userID");
+
+                            String userPass = jsonObject.getString("userPassword");
+                            Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, UserMainActivity.class);
+
+
+
+
+
+
+                            intent.putExtra("name", userID);
+
+                            startActivity(intent);
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            LoginRequest loginRequest = new LoginRequest(userID, userPass, responseListener);
+            RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+            queue.add(loginRequest);
+        }
+    });}
+~~~
+
+로그인을 하는 LoginActivity에서 회원가입 버튼을 만들고 Button ClickListener를 이용하여 사용자의 아이디를 MainActivity로 보내게 된다.
+
+
+>#### 2-1-4 카카오 로그인
 카카오톡은 대한민국에서 가장 큰 sns로 우리나라의 국민 전부가 쓰고 있다고 해도 과언이 아닌 어플로, 카카오 로그인을 통하여 간편하게 어플을 즐길 수 있도록 하였다. 
 카카오에 APP등록하기   
 [kakao app등록 링크](https://developers.kakao.com/)   
