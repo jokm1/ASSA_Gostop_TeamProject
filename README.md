@@ -267,7 +267,8 @@ btn_login.setOnClickListener(new View.OnClickListener() {
     });}
 ~~~
 
-로그인을 하는 LoginActivity에서 회원가입 버튼을 만들고, Button ClickListener를 이용하여 # 사용자의 아이디를 MainActivity로 보내게 된다.
+로그인을 하는 LoginActivity에서 회원가입 버튼을 만들고, Button ClickListener를 이용하여
+#사용자의 아이디를 MainActivity로 보내게 된다.
 
 
 >#### 2-1-4 카카오 로그인
