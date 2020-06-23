@@ -186,7 +186,7 @@ private void getAppKeyHash() {
 ##### 해시 키 등록
 ![해시키등록](https://user-images.githubusercontent.com/62593452/85231707-7ad06c00-b434-11ea-8227-65cfb3187d6c.png)     
 
-##주의사항
+## 주의사항
 안드로이드 스튜디오를 통해 직접 스마트폰으로 빌드 할 경우 디버그 키를 사용하기 때문에 카카오디벨로퍼에 앱을 등록한 개발자가 해시키를 등록해야만 로그인이 가능하다.
 단, apk파일로 설치할 경우에는 릴리즈 키를 사용하기 때문에 위와 같은 과정이 필요없다. 카카오 로그인을 하려면 app폴더의 release폴더의 ASSA_gostop.apk를 다운받아 사용해주세요.
 ![빌드 후 주의사항](https://user-images.githubusercontent.com/51045433/85376702-094b0780-b573-11ea-87a8-080dfc6d8b33.png)
