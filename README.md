@@ -210,6 +210,10 @@ public class RegisterRequest extends StringRequest {
 회원가입을 위해 RegisterActivity와 RegisterRequset를 작성한다.
 RegisterRequest는 서버에 사용자의 정보를 보내며, RegisterActivity는 회원가입 화면을 보여주며 정보를 저장한다.
 
+![RegisterActivity]<img src="https://user-images.githubusercontent.com/62869017/85398425-2c37e480-b590-11ea-85e9-a91498c3c43e.jpg" width="40%">
+
+
+
 ~~~java
 btn_register.setOnClickListener(new View.OnClickListener() {//회원가입 버튼 클릭시
     @Override
