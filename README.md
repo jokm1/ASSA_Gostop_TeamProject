@@ -1099,13 +1099,13 @@ private AdSize getAdSize() {
 >>#### 2-4-1 Unity와 Android Studio 연동
 Unity와 Android Studio를 연동하여 빌드하기 위해서는 먼저 Unity에서 Package 명을 맞춘 뒤 export해주어야 합니다.
 
-![Package 명 맞추기]<img src="https://user-images.githubusercontent.com/62869017/85506813-0b24d180-b62c-11ea-9ced-827d9ebf90a3.PNG" width="40%">
+<img src="https://user-images.githubusercontent.com/62869017/85506813-0b24d180-b62c-11ea-9ced-827d9ebf90a3.PNG" width="40%">
 
-![Export 하기]<img src="https://user-images.githubusercontent.com/62869017/85506886-33accb80-b62c-11ea-8df8-07c8a47a080d.PNG" width="40%">
+<img src="https://user-images.githubusercontent.com/62869017/85506886-33accb80-b62c-11ea-8df8-07c8a47a080d.PNG" width="40%">
 
 그 후 export가 완료된 폴더에서 unityLibrary/libs에 있는 unity-class/jar파일을 연동할 Android Studio 파일의 app/libs폴더 안에 복사하여 줍니다.
 
-<img src="https://user-images.githubusercontent.com/62869017/85506917-4d4e1300-b62c-11ea-9833-b0dc7c6344d5.PNG" width="40%">
+![3](https://user-images.githubusercontent.com/62869017/85507103-bafa3f00-b62c-11ea-8c77-3cdc7902dc73.PNG)
 
 
 >>#### 2-4-2 고스톱 알고리즘
