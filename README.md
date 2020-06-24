@@ -1103,7 +1103,8 @@ Unity와 Android Studio를 연동하여 빌드하기 위해서는 먼저 Unity�
 
 <img src="https://user-images.githubusercontent.com/62869017/85506886-33accb80-b62c-11ea-8df8-07c8a47a080d.PNG" width="40%">
 
-그 후 export가 완료된 폴더에서 unityLibrary/libs에 있는 unity-class/jar파일을 연동할 Android Studio 파일의 app/libs폴더 안에 복사하여 줍니다.
+그 후 export가 완료된 폴더에서 unityLibrary/libs에 있는 unity-class/jar파일을 찾아  
+연동할 Android Studio 파일의 app/libs폴더 안에 복사하여 줍니다.
 
 ![3](https://user-images.githubusercontent.com/62869017/85507103-bafa3f00-b62c-11ea-8c77-3cdc7902dc73.PNG)
 
