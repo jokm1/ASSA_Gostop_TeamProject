@@ -1097,6 +1097,16 @@ private AdSize getAdSize() {
 
 >### 2-4 Unity
 >>#### 2-4-1 Unity와 Android Studio 연동
+Unity와 Android Studio를 연동하여 빌드하기 위해서는 먼저 Unity에서 Package 명을 맞춘 뒤 export해주어야 합니다.
+
+![Package 명 맞추기]<img src="https://user-images.githubusercontent.com/62869017/85506813-0b24d180-b62c-11ea-9ced-827d9ebf90a3.PNG" width="40%">
+
+![Export 하기]<img src="https://user-images.githubusercontent.com/62869017/85506886-33accb80-b62c-11ea-8df8-07c8a47a080d.PNG" width="40%">
+
+그 후 export가 완료된 폴더에서 unityLibrary/libs에 있는 unity-class/jar파일을 연동할 Android Studio 파일의 app/libs폴더 안에 복사하여 줍니다.
+
+<img src="https://user-images.githubusercontent.com/62869017/85506917-4d4e1300-b62c-11ea-9833-b0dc7c6344d5.PNG" width="40%">
+
 
 >>#### 2-4-2 고스톱 알고리즘
 48개의 화투중 각자 한장씩 뽑아 선을 정한다. 그리고 바닥에 4장, 선이 아닌 플레이어에 5장, 선에게 5장 이렇게 두번 반복해서 바닥에 8장, 플레이어가 각 10장씩 가지게 되면 게임이 시작된다. 이번에 만든 게임은 연령대에 구애받지 않는 게임이기에 점수 측정에 큰 무게를 두지 않았기 때문에 고의 개수에 따른 배점은 존재하지 않는다. 족보에 해당되는 광, 고도리, 홍단, 청단 등등은 점수 측정이 된다. 최종 10점이상이 되면 고 또는 스톱을 선택하게 되서 스톱을 선택하면 게임이 끝나게 된다.
