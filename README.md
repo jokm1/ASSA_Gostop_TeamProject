@@ -1107,6 +1107,82 @@ Unity와 Android Studio를 연동하여 빌드하기 위해서는 먼저 Unity�
 
 ![3](https://user-images.githubusercontent.com/62869017/85507103-bafa3f00-b62c-11ea-8c77-3cdc7902dc73.PNG)
 
+또한 unityLibrary/src/main의 assets, jnLibs 폴더 역시 Android Studio의 같은 위치로 옮겨 주며  
+unityLibrary/src/main/java/com/unity3d/player에 있는 UnityPlayerActivity도 MainActivity가 있는 폴더에 넣어줍니다.
+
+![4](https://user-images.githubusercontent.com/62869017/85507178-d9f8d100-b62c-11ea-8ced-d9a9ba561274.PNG)
+![5](https://user-images.githubusercontent.com/62869017/85507428-51c6fb80-b62d-11ea-8d84-2074ace91393.PNG)
+
+Android Studio의 Build.gradle(app)에다가 코드를 적어줍니다.
+
+~~~java
+
+android {
+
+...
+
+
+testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters 'armeabi-v7a', 'x86'
+        }
+}
+
+dependencies {
+         ...
+	 
+	 implementation files('libs\\unity-classes.jar')
+	 
+	 }
+	 
+allprojects {
+    repositories {
+
+        flatDir {
+            dirs 'libs'
+        }
+~~~
+
+그 다음 string.xml에다가 코드를 적어줍니다
+
+~~~java
+   <string name="game_view_content_description">Game view</string>
+~~~
+
+또한 manifest에 UnityActivityPlayer를 적어주게 된다면 Intent하여 사용할 수 있는 Unity연동이 끝나게 됩니다.
+~~~java
+ <activity android:name=".UnityPlayerActivity"
+ ~~~
+ 
+ ~~~java
+    public class MainActivity extends AppCompatActivity {
+
+
+    public static final int sub = 1001;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+	 }
+   
+   public void onClick(View view) {
+        Button arButton  = (Button)findViewById(R.id.btn_call_unity);;
+        Toast.makeText(getApplicationContext(), "버튼이 눌렸습니다!", Toast.LENGTH_LONG).show();
+
+
+        arButton.setEnabled(false);
+        Intent intent = new Intent(getApplicationContext(), UnityPlayerActivity.class);
+        startActivity(intent);
+
+        //유니티 플레이어 액티비티 실행
+    }
+}
+~~~
+
+<img src="https://user-images.githubusercontent.com/62869017/85508254-acad2280-b62e-11ea-8fd6-bcb712b53803.jpg" width="40%">
+
+![KakaoTalk_20200624_152308122](https://user-images.githubusercontent.com/62869017/85508251-ab7bf580-b62e-11ea-9250-e10e46716806.jpg)
+
 
 >>#### 2-4-2 고스톱 알고리즘
 48개의 화투중 각자 한장씩 뽑아 선을 정한다. 그리고 바닥에 4장, 선이 아닌 플레이어에 5장, 선에게 5장 이렇게 두번 반복해서 바닥에 8장, 플레이어가 각 10장씩 가지게 되면 게임이 시작된다. 이번에 만든 게임은 연령대에 구애받지 않는 게임이기에 점수 측정에 큰 무게를 두지 않았기 때문에 고의 개수에 따른 배점은 존재하지 않는다. 족보에 해당되는 광, 고도리, 홍단, 청단 등등은 점수 측정이 된다. 최종 10점이상이 되면 고 또는 스톱을 선택하게 되서 스톱을 선택하면 게임이 끝나게 된다.
